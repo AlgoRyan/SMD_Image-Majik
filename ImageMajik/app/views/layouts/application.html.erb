@@ -7,9 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+        <div class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                        <div class="container">
+                                <%= link_to "ImageMajik", homepages_path, class: 'navbar-brand' %>
+                        </div>  
+                </div>
+        </div>
 
-<%= yield %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+        <div class="container">
+                <%= yield %>
+        </div>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 </body>
 </html>

@@ -3,16 +3,16 @@ class HomepagesController < ApplicationController
 
   def index
     @homepages = Homepage.all
-    
+    respond_with(@homepages)
   end
 
   def show
- 
+    respond_with(@homepage)
   end
 
   def new
     @homepage = Homepage.new
-    
+    respond_with(@homepage)
   end
 
   def edit
@@ -21,17 +21,17 @@ class HomepagesController < ApplicationController
   def create
     @homepage = Homepage.new(homepage_params)
     @homepage.save
-   
+    respond_with(@homepage)
   end
 
   def update
     @homepage.update(homepage_params)
-   
+    respond_with(@homepage)
   end
 
   def destroy
     @homepage.destroy
-    
+    respond_with(@homepage)
   end
 
   private
