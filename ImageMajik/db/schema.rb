@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012031708) do
+ActiveRecord::Schema.define(version: 20141012040045) do
+
+  create_table "albums", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
 
   create_table "homepages", force: true do |t|
     t.datetime "created_at"
@@ -34,6 +40,7 @@ ActiveRecord::Schema.define(version: 20141012031708) do
     t.string   "account_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "album"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
