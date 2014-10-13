@@ -2,13 +2,15 @@ Rails.application.routes.draw do
   resources :albums
 
   devise_for :users
-  resources :homepages
+
+  root to: 'splash#default'
+
+  get '/homepage', to: 'homepage#welcome', as: :homepage
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root to: 'homepages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
