@@ -28,13 +28,21 @@ class ImagesController < ApplicationController
   end
 
   def update
-    @image.update(image_params)
+    respond_to do |format|
+      if @image.update(image_params)
+        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @aimage.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @image = Image.find(params[:id])
     if @image.destroy
-      redirect_to @album, notice: "Successfully Deleted"
+      redirect_to @image.album, notice: "Successfully Deleted"
     end
   end
 
