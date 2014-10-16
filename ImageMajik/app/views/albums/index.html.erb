@@ -1,4 +1,4 @@
-<h1>Listing albums</h1>
+<h1>Current Albums</h1>
 
 <table>
   <thead>
@@ -6,18 +6,20 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
 </table>
+  <body>
+    <% @albums.each do |album| %>
+      <br>
+        <p><%= link_to album.title, album %></p>
+        <p><%= link_to 'Edit', edit_album_path(album) %></p>
+        <p><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <br>
+    <% end %>
+  
+  <p><%= link_to 'New Album', new_album_path %></p>
+  <p><%= link_to 'Back', homepage_path %></p>
+
+  </body>
+
 
 <br>
-
-<%= link_to 'New Album', new_album_path %>

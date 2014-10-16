@@ -11,13 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012040045) do
+ActiveRecord::Schema.define(version: 20141015113607) do
 
   create_table "albums", force: true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+    t.integer  "user_id"
+    t.integer  "album_id"
   end
+
+  add_index "albums", ["album_id"], name: "index_albums_on_album_id"
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
+  create_table "images", force: true do |t|
+    t.string   "label"
+    t.string   "caption"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "album_id"
+  end
+
+  add_index "images", ["album_id"], name: "index_images_on_album_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -35,7 +50,6 @@ ActiveRecord::Schema.define(version: 20141012040045) do
     t.string   "account_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "album"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
