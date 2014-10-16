@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   resources :images
 
-  resources :albums
-
-  resources :albums
-
   devise_for :users
+
+  resources :albums
 
   root to: 'splash#default'
 

@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
 
   def index
-    @albums = Album.all
+    @albums = Album.where(user_id: current_user.id)
   end
 
   def show
@@ -18,6 +18,7 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
+    @album.user = current_user
     if @album.save
       redirect_to @album, notice: "New Album Created"
     else
@@ -51,6 +52,8 @@ class AlbumsController < ApplicationController
     end
 
     def album_params
-      params.require(:album).permit(:title)
+      temp = {"user_id" => current_user.id()}
+      params.merge(temp)
+      params.require(:album).permit(:title, :user_id)
     end
 end
