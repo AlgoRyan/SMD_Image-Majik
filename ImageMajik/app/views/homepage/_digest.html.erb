@@ -1,0 +1,9 @@
+<% @albums.each do |album| %>
+  <br>
+  <p><%= link_to album.title, album %></p>
+  <% album.images.each do |image| %>
+      <p><%= image_tag image.picture_url.to_s %>
+      <p><%= link_to image.label, image %></p>
+      <p><%= image.caption %></p>
+  <% end %>
+<% end %>

@@ -1,5 +1,11 @@
-<h1> <%="#{current_user.full_name}'s Homepage "%></h1>
+<h1> <%="#{current_user.account_name}'s Homepage "%></h1>
 
 <body>
-	<p><%= link_to 'Show Current Albums', albums_path %></p>
+	<div id="newsfeed" class="col-md-5">
+		<p>This block will show newly uploaded/popular images from your friends.</p>
+	</div>
+	<div id="album-display" class="col-md-5">
+		<p><%= link_to 'Manage Your Albums', albums_path %></p>
+		<%= render 'digest' %>
+	</div>
 </body>
