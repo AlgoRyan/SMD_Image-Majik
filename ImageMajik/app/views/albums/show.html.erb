@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Album Title:</strong>
   <%= @album.title %>
-  <strong>User ID:</strong>
-  <%= @album.user_id %>
 </p>
 
 <p><%= link_to 'Edit', edit_album_path(@album) %> |
@@ -12,15 +10,22 @@
 </p>
 
 <body>
+  <div id="images">
     <% @album.images.each do |image| %>
       <br>
-        <p><%= image_tag image.picture_url.to_s %>
-        <p><%= link_to image.label, image %></p>
-        <p><%= image.caption %></p>
-        <p><%= link_to 'Edit', edit_image_path(image) %></p>
-        <p><%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <div class="image">
+          <%= image_tag image.picture_url.to_s %>
+          <p><strong>Label:</strong>
+            <%= link_to image.label, image %></p>
+          <p><strong>Caption:</strong>
+            <%= image.caption %></p>
+          <p><%= link_to 'Edit', edit_image_path(image) %>
+            <%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </div>
       <br>
     <% end %>
+  </div>
 </body>
 
 <p><%= link_to 'Add Image', new_album_image_path(@album) %></p>

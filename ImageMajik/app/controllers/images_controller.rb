@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @image = Image.find(params[:id])
   end
 
   def new
@@ -34,7 +35,7 @@ class ImagesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @aimage.errors, status: :unprocessable_entity }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,6 +57,6 @@ class ImagesController < ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:label, :caption)
+      params.require(:image).permit(:label, :caption, :picture)
     end
 end
