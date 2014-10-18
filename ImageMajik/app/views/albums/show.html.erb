@@ -3,8 +3,6 @@
 <p>
   <strong>Album Title:</strong>
   <%= @album.title %>
-  <strong>User ID:</strong>
-  <%= @album.user_id %>
 </p>
 
 <p><%= link_to 'Edit', edit_album_path(@album) %> |
@@ -25,8 +23,8 @@
             <%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' } %>
           </p>
         </div>
-       <br>
-     <% end %>
+      <br>
+    <% end %>
   </div>
 </body>
 
