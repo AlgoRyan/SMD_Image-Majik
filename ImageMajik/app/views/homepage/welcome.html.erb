@@ -1,6 +1,10 @@
 <h1> <%="#{current_user.account_name}'s Homepage "%></h1>
 
 <body>
+	<div>
+		<p><%= link_to 'Friends Search', userlist_path %></p>
+		<br>
+	</div>
 	<div id="newsfeed" class="col-md-5">
 		<p>This block will show newly uploaded/popular images from your friends.</p>
 	</div>

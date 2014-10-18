@@ -1,0 +1,14 @@
+<h1> User List </h1>
+
+<% @friends.each do |user| %>
+	<% if current_user.friend_with? user  %>
+     	<%= link_to "Unfriend", friend_path(user), :method => "delete", :class => 'btn btn-mini' %>
+		<% elsif current_user.invited? user  %>
+     	<span class="btn btn-mini disabled">Pending</span>
+		<% elsif user.invited? current_user  %>
+     	<%= link_to "Accept", friend_path(user), :method => "put", :class => 'request-approve btn btn-mini' %>
+     	<%= link_to "Decline", friend_path(user), :method => "delete", :class => 'request-decline btn btn-mini' %>
+		<% else %>
+     	<%= link_to "Add friend", friends_path(:user_id => user), :method => "post", :class => 'btn btn-mini' %>
+	<% end %>
+<% end %>

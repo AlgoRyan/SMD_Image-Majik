@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   root to: 'splash#default'
 
   get '/homepage', to: 'homepage#welcome', as: :homepage
+  get '/userlist', to: 'friendships#userlist', as: :userlist
+
+  # config/routes.rb
+  resources :friends, :controller => 'friendships', :except => [:show, :edit] do
+    get "requests", :on => :collection
+    get "invites", :on => :collection
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

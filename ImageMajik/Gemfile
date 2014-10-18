@@ -9,6 +9,9 @@ gem 'carrierwave'
 #install mini_magick
 gem 'mini_magick'
 
+#install amistad for freindship models
+gem 'amistad'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
 # Use sqlite3 as the database for Active Record
