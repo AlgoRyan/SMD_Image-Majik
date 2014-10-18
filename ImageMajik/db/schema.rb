@@ -18,8 +18,10 @@ ActiveRecord::Schema.define(version: 20141016125748) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "album_id"
   end
 
+  add_index "albums", ["album_id"], name: "index_albums_on_album_id"
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
 
   create_table "images", force: true do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141016125748) do
     t.string   "account_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

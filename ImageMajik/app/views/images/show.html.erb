@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-	<%= image_tag @image.picture_url.to_s %>
+	<%= image_tag @image.picture_url(:thumb).to_s %>
 </p>
 <p>
   <strong>Label:</strong>

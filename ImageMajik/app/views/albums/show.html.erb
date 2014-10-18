@@ -14,7 +14,7 @@
     <% @album.images.each do |image| %>
       <br>
         <div class="image">
-          <%= image_tag image.picture_url.to_s %>
+          <%= image_tag image.picture_url(:thumb).to_s %>
           <p><strong>Label:</strong>
             <%= link_to image.label, image %></p>
           <p><strong>Caption:</strong>

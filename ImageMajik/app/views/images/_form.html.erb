@@ -22,7 +22,10 @@
   <div class="field">
     <%= f.file_field :picture %><br>
   </div>
-
+  <div>
+    <%= f.label :remote_picture_url, "or image URL" %>
+    <%= f.text_field :remote_picture_url %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
