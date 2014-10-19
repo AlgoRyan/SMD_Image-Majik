@@ -1,0 +1,49 @@
+<h1> Your Social Network </h1>
+<br>
+
+<div class="block">
+	<p><strong>Your current friends</strong></p>
+	<div>
+		<% @friends.each do |friend| %>
+			<div class="inline">
+				<div class="thumb_placeholder">
+					<%= friend.account_name %>
+				</div>
+				<p><%= link_to "Remove friend?", friend_path(friend), :method => "delete" %></p>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="block">
+	<p><strong>Your pending friend requests</strong></p>
+	<div>
+		<% @you_invited.each do |invited| %>
+			<div class="inline">
+				<div class="thumb_placeholder">
+					<%= invited.account_name %>
+				</div>
+				<p><%= link_to "Cancel request?", friend_path(invited), :method => "delete" %></p>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="block">
+	<p><strong>Waiting for your approval</strong></p>
+	<div>
+		<% @other_invited.each do |inviter| %>
+			<div class="inline">
+				<div class="thumb_placeholder">
+					<%= inviter.account_name %>
+				</div>
+				<p><%= link_to "Confirm friend?", friend_path(inviter), :method => "put" %></p>
+				<p><%= link_to "Decline request?", friend_path(inviter), :method => "delete" %></p>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<p><%= flash[:notice] %></p>
+<br>
+<p><%= link_to 'Back', homepage_path %></p>

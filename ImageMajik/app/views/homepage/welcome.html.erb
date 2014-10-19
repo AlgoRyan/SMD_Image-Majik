@@ -1,15 +1,14 @@
 <h1> <%="#{current_user.account_name}'s Homepage "%></h1>
 
-<body>
-	<div id="friends-list" class="block">
-		<p><%= link_to 'Find other friends', new_friend_path %></p>
-		<%= render 'friends' %>
-	</div>
-	<div id="newsfeed" class="block col-md-6">
-		<p>This block will show newly uploaded/popular images from your friends.</p>
-	</div>
-	<div id="album-display" class="block col-md-5">
-		<p><%= link_to 'Manage Your Albums', albums_path %></p>
-		<%= render 'digest' %>
-	</div>
-</body>
+<div id="friends-list" class="block">
+	<p><%= link_to 'Find other Friends', new_friend_path %> |
+		<%= link_to 'Manage Friendships', friends_path %></p>
+	<%= render 'friends' %>
+</div>
+<div id="newsfeed" class="block col-md-6">
+	<p>This block will show newly uploaded/popular images from your friends.</p>
+</div>
+<div id="album-display" class="block col-md-5">
+	<p><%= link_to 'Manage Your Albums', albums_path %></p>
+	<%= render 'digest' %>
+</div>

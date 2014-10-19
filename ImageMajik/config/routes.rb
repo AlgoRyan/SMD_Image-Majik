@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   get '/homepage', to: 'homepage#welcome', as: :homepage
 
-  # config/routes.rb
   resources :friends, :controller => 'friendships', :except => [:show, :edit] do
     get "requests", :on => :collection
     get "invites", :on => :collection

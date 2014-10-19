@@ -1,9 +1,13 @@
-<% @albums.each do |album| %>
-  <br>
-  <p><%= link_to album.title, album %></p>
-  <% album.images.each do |image| %>
-      <p><%= image_tag image.picture_url(:thumb).to_s %>
-      <p><%= link_to image.label, image %></p>
-      <p><%= image.caption %></p>
-  <% end %>
-<% end %>
+<br>
+<div id="album-digest">
+	<% @albums.each do |album| %>
+	  <div class="inline">
+		  <p><%= link_to album.title, album %></p>
+		  <% album.images.each do |image| %>
+		      <p><%= image_tag image.picture_url(:thumb).to_s %>
+		      <p><%= link_to image.label, image %></p>
+		      <p><%= image.caption %></p>
+		  <% end %>
+		</div>
+	<% end %>
+</div>

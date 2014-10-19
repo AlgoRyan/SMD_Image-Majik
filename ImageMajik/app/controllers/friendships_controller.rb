@@ -4,18 +4,26 @@ before_filter :authenticate_user!
 
   def index
     @friends = current_user.friends
-    @pending_invited_by = current_user.pending_invited_by
-    @pending_invited = current_user.pending_invited
+    @other_invited = current_user.pending_invited_by
+    @you_invited = current_user.pending_invited
   end
 
   def new
-    @users = User.where.not(id: current_user.id)
+    @users = User.where(["id != :this", {this: current_user.id}])
+    @not_connected = Array.new()
+    @users.each do |user|
+      if current_user.connected_with? user
+        # Do nothing
+      else 
+        @not_connected << user
+      end
+    end
   end
 
   def create
     invitee = User.find_by_id(params[:user_id])
     if current_user.invite invitee
-      redirect_to new_friend_path, :notice => "Successfully invited friend!"
+      redirect_to new_friend_path, :notice => "Successfully invited user!"
     else
       redirect_to new_friend_path, :notice => "Sorry! You can't invite that user!"
     end
@@ -24,9 +32,9 @@ before_filter :authenticate_user!
   def update
     inviter = User.find_by_id(params[:id])
     if current_user.approve inviter
-      redirect_to new_friend_path, :notice => "Successfully confirmed friend!"
+      redirect_to friends_path, :notice => "Successfully confirmed friendship!"
     else
-      redirect_to new_friend_path, :notice => "Sorry! Could not confirm friend!"
+      redirect_to friends_path, :notice => "Sorry! Could not confirm friendship!"
     end
   end
 

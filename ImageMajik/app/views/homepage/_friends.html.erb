@@ -1,5 +1,9 @@
-<% @friends.each do |friend| %>
-	<div class="thumb_placeholder">
-		<%= friend.account_name %>
-	</div>
-<% end %>
+<div id="friends-digest">	
+	<% @friends.each do |friend| %>
+		<div class="inline">
+			<div class="thumb_placeholder">
+				<%= friend.account_name %>
+			</div>
+		</div>
+	<% end %>
+</div>

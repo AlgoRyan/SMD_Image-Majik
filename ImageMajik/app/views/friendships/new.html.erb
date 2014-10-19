@@ -1,23 +1,13 @@
-<h1> User List </h2>
-	<br>
-	<p><%= link_to 'Back', homepage_path %></p>
+<h1> Search for Another User </h1>
 <br>
-<% @users.each do |user| %>
+
+<% @not_connected.each do |user| %>
 	<div class="thumb_placeholder">
 		<%= user.account_name %>
 	</div>
-
-	<% if current_user.friend_with? user %>
-		<p>You are friends!</p>
-		<p><%= link_to "Remove friend?", friends_path(:user_id => user), :method => "delete" %>
-		</p>
-	<% elsif current_user.invited? user %>
-		<p>Friendship request pending...</p>
-	<% elsif user.invited? current_user %>
-		<p><%= link_to "Confirm friend?", friend_path(user), :method => "put" %></p>
-		<p><%= link_to "Decline request?", friend_path(:nil => user), :method => "patch" %></p>
-	<% else %>
-		<p><%= link_to "Add friend?", friends_path(:user_id => user), :method => "post" %></p>
-	<% end %>
-
+	<p><%= link_to "Add friend?", friends_path(:user_id => user), :method => "post" %></p>
 <% end %>
+
+<p><%= flash[:notice] %></p>
+<br>
+<p><%= link_to 'Back', homepage_path %></p>
