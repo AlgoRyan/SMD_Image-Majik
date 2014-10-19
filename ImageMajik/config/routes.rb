@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root to: 'splash#default'
 
   get '/homepage', to: 'homepage#welcome', as: :homepage
-  get '/userlist', to: 'friendships#userlist', as: :userlist
 
   # config/routes.rb
   resources :friends, :controller => 'friendships', :except => [:show, :edit] do

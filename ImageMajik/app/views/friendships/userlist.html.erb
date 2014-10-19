@@ -1,9 +1,0 @@
-<h1> User List </h1>
-
-<% @users = User.all %>
-<% @users.each do |user| %>
-
-  <%= user.email %><br/>
-  <%= link_to "Add friend?", friends_path(:user_id => user), :method => "post" %><br>
-
-<% end %>

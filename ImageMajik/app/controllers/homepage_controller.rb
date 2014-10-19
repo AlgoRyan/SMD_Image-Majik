@@ -3,9 +3,7 @@ class HomepageController < ApplicationController
 
   def welcome
   	@albums = Album.where(user_id: current_user.id)
-    #@images = current_user.images
-    #@comments = current_user.comments
-    #@galleries = current_user.albums
+    @friends = current_user.friends
   end
 
 end

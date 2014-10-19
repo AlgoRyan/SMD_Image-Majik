@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.block {
+	background: #d3d3d3;
+	margin: 15px;
+	padding: 10px;
+}
+
+.thumb_placeholder {
+	background: #2f4f4f;
+	color: white;
+	text-align: center;
+	margin: 2px;
+	height: 100px;
+	width: 100px;
+}

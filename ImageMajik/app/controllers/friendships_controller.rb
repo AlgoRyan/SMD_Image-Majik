@@ -7,7 +7,7 @@ before_filter :authenticate_user!
   end
 
   def new
-    @users = User.all :conditions => ["id != ?", current_user.id]
+    @users = User.where.not(id: current_user.id)
   end
 
   def create

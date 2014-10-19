@@ -4,13 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  
- has_many :albums
+ 	has_many :albums
 
- include Amistad::FriendModel
+ 	include Amistad::FriendModel
 
- def full_name
+ 	def full_name
   	"#{self[:first_name]} #{self[:last_name]}"
- end
-
+	end
  
 end
