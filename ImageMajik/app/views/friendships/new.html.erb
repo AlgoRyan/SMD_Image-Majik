@@ -4,7 +4,7 @@
 	</div>
 
 	<% if current_user.friend_with? user %>
-		<p>You are friends!</p>
+		<p>You are already friends!</p>
 	<% elsif current_user.invited? user %>
 		<p>Friendship request pending...</p>
 	<% elsif user.invited? current_user %>
@@ -14,5 +14,3 @@
 	<% end %>
 
 <% end %>
-
-<p><%= link_to 'Back', homepage_path %></p>
