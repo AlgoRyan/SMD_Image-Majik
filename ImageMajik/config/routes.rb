@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get "invites", :on => :collection
   end
 
+  get '/share/:image_id', to: 'sharing#new', as: :share
+  post '/share/:image_id', to: 'sharing#create'
+  delete '/share/:user_id', to: 'sharing#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

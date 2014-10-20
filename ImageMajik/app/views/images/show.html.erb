@@ -13,5 +13,6 @@
   <%= @image.caption %>
 </p>
 
+<%= link_to 'Share', share_path(@image) %> |
 <%= link_to 'Edit', edit_image_path %> |
 <%= link_to 'Back', album_path(@image.album) %>

@@ -6,7 +6,8 @@
 	<%= render 'friends' %>
 </div>
 <div id="newsfeed" class="block col-md-6">
-	<p>This block will show newly uploaded/popular images from your friends.</p>
+	<p><strong>Your Newsfeed</strong></p>
+	<%= render 'feed' %>
 </div>
 <div id="album-display" class="block col-md-5">
 	<p><%= link_to 'Manage Your Albums', albums_path %></p>

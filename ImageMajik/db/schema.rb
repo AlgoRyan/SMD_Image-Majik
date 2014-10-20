@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20141019025301) do
 
   add_index "images", ["album_id"], name: "index_images_on_album_id"
 
+  create_table "shares", force: true do |t|
+    t.string   "policy"
+    t.integer  "image_id"
+    t.integer  "giver_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shares", ["giver_id", "receiver_id"], name: "index_shares_on_giver_id_and_receiver_id", unique: true
+  add_index "shares", ["image_id"], name: "index_shares_on_image_id"
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

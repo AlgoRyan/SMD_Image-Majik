@@ -1,0 +1,11 @@
+<br>
+<div id="feed">
+	<% @shared_images.each do |image| %>
+	  <div class="inline">
+	      <p><%= image_tag image.picture_url(:thumb).to_s %>
+	      <p><%= link_to image.label, image %></p>
+	      <p><%= image.caption %></p>
+	      <p><%= image.user %></p>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,16 @@
+<h2>This is the sharing interface!<h2>
+
+<div id="sharing">
+	<% @shareable_with.each do |user| %>
+		<div class="inline">
+			<div class="thumb_placeholder">
+				<%= user.account_name %>
+			</div>
+			<p><%= link_to "Share with?", share_path(:image_id => @image, :user_id => user), :method => "post" %></p>
+		</div>
+	<% end %>
+</div>
+
+<p><%= flash[:notice] %></p>
+<br>
+<p><%= link_to 'Back', image_path(@image) %></p>
